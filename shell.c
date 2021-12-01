@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int input(char *s, int length);
 
@@ -8,6 +9,7 @@ int main()
 	char *buffer;
 	size_t bufsize = 32;
 	size_t characters;
+	char *p = "# ";
 
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	if (buffer == NULL)
@@ -16,7 +18,7 @@ int main()
 	}
 	while (1)
 	{
-	printf("root@0035e6b65699:~/holbertonschool-low_level_programming/testShell# ");
+	write(1, p, 2);
 	characters = getline(&buffer, &bufsize, stdin);
 	}
 	free(buffer);
