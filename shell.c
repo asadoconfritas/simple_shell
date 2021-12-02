@@ -1,26 +1,32 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+/**
+*
+*
+*
+*/
 
-int input(char *s, int length);
-
-int main()
+void execute(char **argv)
 {
-	char *buffer;
-	size_t bufsize = 32;
-	size_t characters;
-	char *p = "# ";
+	pid_t pid;
+	int status;
 
-	buffer = (char *)malloc(bufsize * sizeof(char));
-	if (buffer == NULL)
+	if((pid = fork()) < 0)
 	{
-		return ('\0');
+		exit(1);
 	}
-	while (1)
+	else if (pid == 0)
 	{
-	write(1, p, 2);
-	characters = getline(&buffer, &bufsize, stdin);
+		if(execvp(*argv, argv) < 0)
+		{
+			exit(1);
+		}
 	}
-	free(buffer);
-	return (0);
+	else
+	{
+		while (wait(&status) != pid)
+			;
+	}
 }
