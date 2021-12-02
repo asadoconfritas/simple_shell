@@ -3,6 +3,23 @@
 #include <stdlib.h>
 #include <unistd.h>
 /**
+*toktok -Parse into token the input lines
+*@line: input line
+*@argv: arguments
+*/
+void toktok(char *line, char **argv)
+{
+	while (*line != '\0')
+	{
+		while (*line == ' ')
+			*line++ = '\0';
+		*argv++ = line;
+		while (*line != '\0' && *line != ' ')
+			line++;
+	}
+	*argv = '\0';
+}
+/**
 *execute -Recive command line arg, forks a child process and exe
 *@argv: Argument
 */
