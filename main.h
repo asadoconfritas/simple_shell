@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 
+int exec(char **arguments, char *argv[], int count, char *line);
 char *_getline();
 char **tokenoide(char *line);
 char _strcat(char *dest, char *src);

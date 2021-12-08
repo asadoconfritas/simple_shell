@@ -8,9 +8,10 @@ char **tokenoide(char *line)
 {
 	int size = _strlen(line);
 	char *token;
-	char **arrguments_token = malloc(sizeof(char *) * size);
+	char **arguments_token;
 	int i;
 
+	arguments_token = malloc(sizeof(char *) * size);
 	if (!arguments_token)
 	{
 		perror(error with args);
