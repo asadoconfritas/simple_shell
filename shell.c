@@ -33,7 +33,7 @@ void execute(char **argv)
 
 	if ((pid = fork()) < 0)/**fork a child process*/
 	{
-		printf("*** ERROR: forking child process failed\n");
+		write(1, "*** ERROR: forking child process failed\n", 40);
 		exit(1);
 	}
 	else if (pid == 0)/**for the child process:*/
@@ -64,7 +64,7 @@ void main(void)
 	{
 		write(1,"$ ", 2);/**display a prompt*/
 		gets(line);/**read in the command line*/
-		printf("\n");
+		write(1, "\n", 1);
 		parse(line, argv);/**parse the line*/
 		if (strcmp(argv[0], "exit") == 0)/** is it an "exit"?*/
 			exit(0);/**exit if it is*/
