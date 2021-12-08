@@ -55,19 +55,20 @@ void execute(char **argv)
 *main -Main proogram shell
 */
 
-void main(void)
+int main(void)
 {
 	char line[1024];/** the input line*/
 	char *argv[64];/** the command line argument*/
 
 	while (1)/** repeat until done ...*/
 	{
-		write(1, "$ ", 2); /**display a prompt*/
-		gets(line); /**read in the command line*/
+		write(1, "# ", 2);
+		fgets(line, 1024, stdin);
 		write(1, "\n", 1);
 		parse(line, argv); /**parse the line*/
 		if (strcmp(argv[0], "exit") == 0)/** is it an "exit"?*/
 			exit(0); /**exit if it is*/
 		execute(argv); /**otherwise, execute the command*/
 	}
+return (0);
 }
