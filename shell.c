@@ -28,10 +28,10 @@ void parse(char *line, char **argv)
 
 void execute(char **argv)
 {
-	pid_t pid;
+	pid_t pid = fork();
 	int status;
 
-	if ((pid = fork()) < 0)/**fork a child process*/
+	if (pid < 0)/**fork a child process*/
 	{
 		write(1, "*** ERROR: forking child process failed\n", 40);
 		exit(1);
@@ -62,12 +62,12 @@ void main(void)
 
 	while (1)/** repeat until done ...*/
 	{
-		write(1,"$ ", 2);/**display a prompt*/
-		gets(line);/**read in the command line*/
+		write(1, "$ ", 2); /**display a prompt*/
+		gets(line); /**read in the command line*/
 		write(1, "\n", 1);
-		parse(line, argv);/**parse the line*/
+		parse(line, argv); /**parse the line*/
 		if (strcmp(argv[0], "exit") == 0)/** is it an "exit"?*/
-			exit(0);/**exit if it is*/
-		execute(argv);/**otherwise, execute the command*/
+			exit(0); /**exit if it is*/
+		execute(argv); /**otherwise, execute the command*/
 	}
 }
