@@ -1,5 +1,5 @@
 /**
- *_strcat - prints w return
+ *_strcat - concatenate strings
  * @dest: char
  * @src: char
  * Return: end program
@@ -26,7 +26,7 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * _strcmp - print w return
+ * _strcmp - string compare
  * @s1: char
  * @s2: char
  * Return: end product
@@ -47,8 +47,8 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * _strlen - print w return
- * @s: int
+ * _strlen - return lenght
+ * @s: pointer
  * Return: end program
  **/
 
@@ -63,3 +63,23 @@ int _strlen(char *s)
 }
 
 /* ADD STRCPY */
+
+/**
+ * _strcpy - string copy
+ * @dest: char
+ * @src: char
+ * Return: end program
+ **/
+char *_strcpy(char *dest, char *src)
+{
+	int count = 0;
+
+	while (count >= 0)
+	{
+		*(dest + count) = *(src + count);
+		if (*(src + count) == '\0')
+			break;
+		count++;
+	}
+	return (dest);
+}
