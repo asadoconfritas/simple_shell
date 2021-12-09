@@ -30,6 +30,13 @@ int main(int argc, char **argv, char **env)
 		{
 			_env();
 		}
+
+d = fork();
+			if (my_pid == 0)
+				execve(token_list[0], token_list, env);
+				wait(&status);
+				if (WIFEXITED(status) != 0)
+				ret = WEXITSTATUS(status);
 	}
 	return (ret);
 }
@@ -45,11 +52,12 @@ int firststep(int *mode, char **inp, char **tokens)
 {
 	int len = 0;
 
+
 	if (isatty(STDIN_FILENO))
 		write(1, "$ ", 2); /**display a prompt*/
 	else
 		*mode = 0;
-	len = getline(inp, &n, stdin);
+	len = getline(inp, 1024, stdin);
 	if (len == -1)
 	{
 		free(*inp);
