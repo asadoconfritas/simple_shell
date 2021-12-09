@@ -10,7 +10,6 @@
 #include <stdarg.h>
 
 int exec(char **arguments, char *argv[], int count, char *line);
-char _getline(void);
 char **tokenoide(char *line);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);

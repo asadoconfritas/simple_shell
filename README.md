@@ -26,10 +26,11 @@ $ gcc -Wall -Werror -Wextra -pedantic -Wno-format *.c -o shell
 
 #### Examples
 ~~~~
-$ ak los ej
+$ ls
+(lists files and directories in the current repository)
 ~~~~
 
 ~~~~
-$ otro
-$ yes
+$ exit
+(exits the shell)
 ~~~~
