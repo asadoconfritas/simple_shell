@@ -18,14 +18,9 @@ int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 
 /* shell */
-int main(int argc, char **argv, char **env);
-int firststep(int *mode, char **inp, char **tokens);
-void parse(char *line, char **argv);
-int isbuiltin(char **tokens);
-
-/* exit */
-void ctrl_d(char *inp, char *tokens, char *env);
-void rajar(char *inp, char *tokens, char *env);
-void ctrl_c(int n);
+int main(int argc, char **argv);
+int firststep(int *mode, char **inp, char ***tokens);
+void execute(char **argv);
+char **parse(char *inp, char *del);
 
 #endif

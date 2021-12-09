@@ -1,19 +1,3 @@
-#include "main.h"
-/**
-*exec -Execute commands
-*@arguments: arg to read
-*@argv: Value
-*@count: Error coun
-*@line: Free
-*Return: 0
-*/
-int exec(char **arguments, char *argv[], int count, char *line)
-{
-	int i, status, flag;
-	pid_t child_process;
-	char str_cocat[100] = "/bin/";
-
-	flag = isatty(STDIN_FILENO);
 	if (!arguments[0])
 	{
 		return (0);

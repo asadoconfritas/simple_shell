@@ -1,12 +1,10 @@
-#include "main.h"
-#include <errno.h>
 /**
  * rajar - exit the program
  * @inp: input
  * @tokens: all tok
  * @env: environment
  * Return: end program
- **/
+ *
 void rajar(char *inp, char *tokens, char *env)
 {
 	int i;
@@ -21,6 +19,7 @@ void rajar(char *inp, char *tokens, char *env)
 			free(env[i]);
 	exit(-1);
 }
+**/
 
 /**
  * ctrl_c - does not exit if ctrl c is pressed
