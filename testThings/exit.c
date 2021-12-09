@@ -1,4 +1,4 @@
-#include "mainsh.h"
+#include "main.h"
 #include <errno.h>
 /**
  * rajar - exit the program
