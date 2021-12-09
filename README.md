@@ -28,6 +28,41 @@ This version of the Unix shell is quite simple, but it is very efficient in prev
 - All your header files should be include guarded
 - Use system calls only when you need to
 
+## List of allowed functions and system calls
+
+- access
+- chdir
+- close
+- closedir
+- execve
+- exit
+- _exit
+- fflush
+- fork
+- free
+- getcwd
+- getline
+- getpid
+- isatty
+- kill
+- malloc
+- open
+- opendir
+- perror
+- read
+- readdir
+- signal
+- stat
+- lstat
+- fstat
+- strtok
+- wait
+- waitpid
+- wait3
+- wait 4
+- write
+
+
 
 ### Use and examples
 #### To install and compile
