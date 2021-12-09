@@ -62,6 +62,19 @@ This version of the Unix shell is quite simple, but it is very efficient in prev
 - wait 4
 - write
 
+## Tasks
+
+| Task | Description |   |
+| --- | --- | --- |
+| 1 | Write a UNIX command line interpreter |
+| 2 | Handle command lines with arguments |
+| 3 | Handle the PATH |
+| 4 | Implement the exit built-in, that exits the shell |
+| 5 | Implement the env built-in, that prints the current environment |
+| 6 | Write a blog [CLICK HERE](https://www.linkedin.com/pulse/what-happens-when-we-type-ls-l-c-shell-diego-monfort/?trackingId=INZ9Kw1pQEauSncT%2BMBxtQ%3D%3D)
+
+
+
 
 
 ### Use and examples
