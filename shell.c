@@ -1,6 +1,25 @@
 #include "main.h"
-#include <stdio.h>
-#include <sys/types.h>
+
+/**
+*ggetline -Get the input string
+*Return: line
+*/
+char *ggetline(void)
+{
+	char *buffer = NULL;
+	size_t buffer_size = 0;
+
+	if (getline(&buffer, &buffer_size, stdin) == EOF)
+	{
+		if (isatty(STDOUT_FILENO))
+		write(1, "\n", 1);
+	free(buffer);
+	exit(EXIT_SUCCESS);
+	}
+	return (buffer);
+}
+
+
 
 /**
 *parse -Take input lines and parse into token
@@ -52,23 +71,23 @@ void execute(char **argv)
 }
 
 /**
-*main -Main proogram shell
+*main -main func
+*Return: 0
 */
-
 int main(void)
 {
-	char line[1024];/** the input line*/
+	char *line;/** the input line*/
 	char *argv[64];/** the command line argument*/
 
 	while (1)/** repeat until done ...*/
 	{
 		write(1, "# ", 2);
-		fgets(line, 1024, stdin);
+		line = ggetline();
 		write(1, "\n", 1);
 		parse(line, argv); /**parse the line*/
 		if (strcmp(argv[0], "exit") == 0)/** is it an "exit"?*/
 			exit(0); /**exit if it is*/
 		execute(argv); /**otherwise, execute the command*/
 	}
-return (0);
+	return (0);
 }

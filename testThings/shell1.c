@@ -1,4 +1,4 @@
-#include "mainsh.h"
+#include "main.h"
 
 /**
  * main - main program shell

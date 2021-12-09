@@ -14,7 +14,7 @@ char **tokenoide(char *line)
 	arguments_token = malloc(sizeof(char *) * size);
 	if (!arguments_token)
 	{
-		perror(error with args);
+		perror("error with args");
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(command_line, " ");
