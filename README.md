@@ -8,7 +8,7 @@ By Diego Monfort and Guzmán Caraballo
 Deadline: Wednesday 8th, December 2021
 </p>
 
-### Description
+## Description
 This is a project made for Holberton School. It consists in a custom simple Unix shell made from scratch.  
   
 The shell is the interface to the operating system. It is a command interpreter; which means that it takes an input passes it to the operating system. 
@@ -77,15 +77,15 @@ This version of the Unix shell is quite simple, but it is very efficient in prev
 
 
 
-### Use and examples
-#### To install and compile
+## Use and examples
+### To install and compile
 ~~~~
 $ git clone https://github.com/asadoconfritas/simple_shell.git
 $ cd simple_shell/
 $ gcc -Wall -Werror -Wextra -pedantic -Wno-format *.c -o shell
 ~~~~
 
-#### Examples
+## Examples
 ~~~~
 $ ls
 (lists files and directories in the current repository)
@@ -95,3 +95,12 @@ $ ls
 $ exit
 (exits the shell)
 ~~~~
+
+
+## Authors Github´s
+- [Diego Monfort](https://github.com/DiegoMHol)
+- [Guzmán Caraballo](https://github.com/asadoconfritas)
+
+
+
+
