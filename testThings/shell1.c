@@ -1,17 +1,83 @@
-#include "main.h"
-#include <stdio.h>
-#include <sys/types.h>
+#include "mainsh.h"
 
 /**
-*parse -Take input lines and parse into token
-*@line: Input line
-*@argv: Arguments
-*/
+ * main - main program shell
+ * @argc: n of arg
+ * @argv: array of args
+ * @env: array
+ * Return: end program
+ **/
+
+int main(int argc, char **argv, char **env)
+{
+	char *inp, **tokens;
+	int ret = 0, mode = 1, isBuilti = 0, fSres = 0;
+	(void)argc;
+	(void)argv;
+
+	signal(SIGINT, SIG_IGN);
+	while (mode)/** repeat until done ...*/
+	{
+		fSres = firststep(&mode, &inp, &tokens);
+		if (fSres == -1)
+			break;
+		isBuilti = isbuiltin(tokens);
+		if (isBuilti == 1)
+		{
+			rajar(&inp, &tokens, env);
+		}
+		if (isBuilti == 2)
+		{
+			_env();
+		}
+	}
+	return (ret);
+}
+
+/**
+ * firststep - on the shell process
+ * @mode: checks interactive mode
+ * @inp: input
+ * @tokens: all tokens
+ * Return: int
+ **/
+int firststep(int *mode, char **inp, char **tokens)
+{
+	int len = 0;
+
+	if (isatty(STDIN_FILENO))
+		write(1, "$ ", 2); /**display a prompt*/
+	else
+		*mode = 0;
+	len = getline(inp, &n, stdin);
+	if (len == -1)
+	{
+		free(*inp);
+		return (-1);
+	}
+	if (*(*inp + (len - 1)) == '\n')
+		*(*inp (len - 1)) = '0';
+	if (len == 1)
+		return (1);
+	
+	*tokens = parse(*inp, **argv);
+	if (!*tokens)
+	{
+		return (1);
+	}
+	return (0);
+}
+
+/**
+ * parse -Take input lines and parse into token
+ * @line: Input line
+ * @argv: Arguments
+ */
 void parse(char *line, char **argv)
 {
 	while (*line != '\0')/** if not the end of line... */
 	{
-		while (*line == ' ' || *line == '\t' || *line == '\n')
+	while (*line == ' ' || *line == '\t' || *line == '\n')
 		{
 			*line++ = '\0';/** replace white spaces with 0*/
 		}
@@ -21,53 +87,17 @@ void parse(char *line, char **argv)
 	}
 	*argv = '\0';/**mark the end of argument list*/
 }
-/**
-*execute -Receives command line arg list (first file name)
-*@argv: arguments
-*/
-
-void execute(char **argv)
-{
-	pid_t pid = fork();
-	int status;
-
-	if (pid < 0)/**fork a child process*/
-	{
-		write(1, "*** ERROR: forking child process failed\n", 40);
-		exit(1);
-	}
-	else if (pid == 0)/**for the child process:*/
-	{
-		if (execvp(*argv, argv) < 0)/**execute the command*/
-		{
-			write(1, "*** ERROR: exec failed\n", 23);
-			exit(1);
-		}
-	}
-	else/**for the parent:*/
-	{
-		while (wait(&status) != pid)/**wait for completion*/
-			;
-	}
-}
 
 /**
-*main -Main proogram shell
-*/
-
-void main(void)
+ * isbuiltin - associates w a certain builtin
+ * @tokens: all of them
+ * Return: int
+ **/
+int isbuiltin(char **tokens)
 {
-	char line[1024];/** the input line*/
-	char *argv[64];/** the command line argument*/
-
-	while (1)/** repeat until done ...*/
-	{
-		write(1, "$ ", 2); /**display a prompt*/
-		gets(line); /**read in the command line*/
-		write(1, "\n", 1);
-		parse(line, argv); /**parse the line*/
-		if (strcmp(argv[0], "exit") == 0)/** is it an "exit"?*/
-			exit(0); /**exit if it is*/
-		execute(argv); /**otherwise, execute the command*/
-	}
+	if (_strcmp(tokens[0], "exit") == 0)
+		return (1);
+	if (_strcmp(tokens[0], "env") == 0)
+		return (2);
+	return (0);
 }
