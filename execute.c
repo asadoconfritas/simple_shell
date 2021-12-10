@@ -23,7 +23,6 @@ void execute(char **tokens)
 			printf("Could not execute command..\n");
 			exit(0);
 		}
-		}
 		else
 		{
 			wait(NULL);
