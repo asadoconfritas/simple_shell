@@ -19,16 +19,8 @@ char *_strcpy(char *dest, char *src);
 
 /* shell */
 int main(int argc, char **argv);
-<<<<<<< HEAD
 int firststep(int *mode, char **inp, char ***tokens);
-void execute(char **argv);
+void execute(char **tokens);
 char **parse(char *inp, char *del);
-=======
-void prompt(void);
-char *read(void);
-void ctrl_d(char *inp, char *tokens, char *env);
-void rajar(char *inp, char *tokens, char *env);
-void ctrl_c(int n);
->>>>>>> e276752f901ba518b3f039f4dcff30125135c95c
 
 #endif

@@ -2,30 +2,29 @@
 
 /**
  * execute - receives command line arg list (first file name)
- * @argv: arguments
+ * @tokens: argument
  */
 
-void execute(char **argv)
+void execute(char **tokens)
 {
 	pid_t pid = fork();
-	int status;
 
-	if (pid < 0)/**fork a child process*/
+	if (pid == -1)
 	{
-		write(1, "*** ERROR: forking child process failed\n", 40);
-		exit(1);
+		printf("\nFailed forking child..");
+		return;
 	}
-	else if (pid == 0)/**for the child process:*/
+	else if (pid == 0)
 	{
-		if (execvp(*argv, argv) < 0)/**execute the command*/
+		if (execvp(tokens[0], tokens) < 0)
 		{
-			write(1, "*** ERROR: exec failed\n", 23);
-			exit(1);
+			printf("\nCould not execute command..");
+			exit(0);
 		}
-	}
-	else/**for the parent:*/
-	{
-		while (wait(&status) != pid)/**wait for completion*/
-			;
+		else
+		{
+			wait(NULL);
+			return;
+		}
 	}
 }

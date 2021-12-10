@@ -3,7 +3,7 @@
 /**
  * parse - string to toks
  * @inp: input
- * @del: sp
+ * @del: space
  * Return: tokens
  **/
 char **parse(char *inp, char *del)
