@@ -44,12 +44,13 @@ int main(int argc, char **argv, char **env)
 int firststep(int *mode, char **inp, char **tokens)
 {
 	int len = 0;
+	size_t milv = 1024;
 
 	if (isatty(STDIN_FILENO))
 		write(1, "$ ", 2); /**display a prompt*/
 	else
 		*mode = 0;
-	len = getline(inp, &n, stdin);
+	len = getline(inp, &milv, stdin);
 	if (len == -1)
 	{
 		free(*inp);
