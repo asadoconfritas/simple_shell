@@ -11,14 +11,14 @@ void execute(char **tokens)
 
 	if (pid == -1)
 	{
-		printf("\nFailed forking child..");
+		printf("Failed forking child..\n");
 		return;
 	}
 	else if (pid == 0)
 	{
 		if (execvp(tokens[0], tokens) < 0)
 		{
-			printf("\nCould not execute command..");
+			printf("Could not execute command..\n");
 			exit(0);
 		}
 	}
