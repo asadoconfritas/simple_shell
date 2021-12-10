@@ -56,7 +56,6 @@ void execute(char **tokens)
 		}
 	}
 }
-#include "main.h"
 
 /**
  * parse - string to toks
@@ -85,8 +84,6 @@ char **parse(char *inp, char *del)
 	}
 	return (tokens);
 }
-#include "main.h"
-#include <stdio.h>
 
 /**
  * main - main program shell
@@ -156,7 +153,6 @@ int firststep(int *mode, char **inp, char ***tokens)
 	execute(tokens[0]);
 	return (0);
 }
-#include "main.h"
 
 /**
  *_strcat - concatenate strings
@@ -221,8 +217,6 @@ int _strlen(char *s)
 		i++;
 	return (i);
 }
-
-/* ADD STRCPY */
 
 /**
  * _strcpy - string copy
