@@ -49,7 +49,7 @@ int firststep(int *mode, char **inp, char ***tokens)
 		return (-1);
 	}
 	if (*(*inp + len - 1) == '\n')
-		*(*inp + len - 1) = '0';
+		*(*inp + len - 1) = '\0';
 	if (len == 1)
 		return (1);
 
@@ -58,10 +58,10 @@ int firststep(int *mode, char **inp, char ***tokens)
 	{
 		return (1);
 	}
-	if (_strcmp(*tokens[0], "exit") == 0)
+	if (_strcmp(inp[0], "exit") == 0)
 	{
 		*mode = 0;
-		return (-1);
+		exit(0);
 	}
 	execute(tokens[0]);
 	return (0);
