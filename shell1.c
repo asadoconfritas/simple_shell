@@ -13,13 +13,11 @@ int main(int argc, char **argv)
 	int mode = 1, fSres = 0;
 	(void)argc;
 
-	/* signal(SIGINT, SIG_IGN); */
-	while (mode)/** repeat until done ...*/
+	while (mode)
 	{
 		fSres = firststep(&mode, argv, &tokens);
 		if (fSres == -1)
 			break;
-		/* execute(tokens); */
 	}
 	if (argv)
 		free(argv);
