@@ -28,4 +28,5 @@ void execute(char **tokens)
 			wait(NULL);
 			return;
 		}
+	}
 }
