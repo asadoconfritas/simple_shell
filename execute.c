@@ -21,10 +21,10 @@ void execute(char **tokens)
 			printf("\nCould not execute command..");
 			exit(0);
 		}
-		else
-		{
-			wait(NULL);
-			return;
-		}
+	}
+	else
+	{
+		wait(NULL);
+		return;
 	}
 }
