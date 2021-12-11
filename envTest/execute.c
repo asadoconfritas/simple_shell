@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * execute - receives command line arg list (first file name)
@@ -9,8 +10,8 @@
 
 void execute(char **tokens, char ***alltok, char **env)
 {
-	int i;
 	pid_t pid = fork();
+	(void)alltok;
 
 	if (pid == -1)
 	{
@@ -19,16 +20,13 @@ void execute(char **tokens, char ***alltok, char **env)
 	}
 	else if (pid == 0)
 	{
-		i = execve(tokens[0], *alltok, env);
-		if (i < 0)
-		{
+		if (execve(tokens[0], tokens, env) < 0)
 			printf("Could not execute command..\n");
-			exit(0);
-		}
-		else
-		{
-			wait(NULL);
-			return;
-		}
+		exit(0);
+	}
+	else
+	{
+		wait(NULL);
+		return;
 	}
 }
