@@ -61,6 +61,6 @@ int firststep(int *mode, char **inp, char ***tokens)
 		*mode = 0;
 		exit(0);
 	}
-	execute(tokens[0]);
+	execute(*tokens);
 	return (0);
 }
