@@ -12,7 +12,7 @@ char **parse(char *inp, char *del)
 	char *tokenizer = NULL;
 	int i = 0;
 
-	tokens = calloc(strlen(inp) + 1, 1);
+	tokens = malloc(strlen(inp) + 1);
 	if (!tokens)
 		exit(-1);
 

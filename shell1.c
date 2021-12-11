@@ -10,17 +10,20 @@
 int main(int argc, char **argv)
 {
 	char **tokens;
-	int mode = 1, fSres = 0;
+	int mode = 1, fSres = 0, isa = 0;
 	(void)argc;
 
 	while (mode)
 	{
+		isa = isatty(STDIN_FILENO);
+		if (isa == 1)
+			write(1, "$ ", 2); /**display a prompt*/
+		else
+			mode = 0;
 		fSres = firststep(&mode, argv, &tokens);
 		if (fSres == -1)
-			break;
+			exit(0);
 	}
-	if (argv)
-		free(argv);
 	if (tokens)
 		free(tokens);
 	return (0);
@@ -38,10 +41,6 @@ int firststep(int *mode, char **inp, char ***tokens)
 	int len = 0;
 	size_t milv = 1024;
 
-	if (isatty(STDIN_FILENO))
-		write(1, "$ ", 2); /**display a prompt*/
-	else
-		*mode = 0;
 	len = getline(inp, &milv, stdin);
 	if (len == -1)
 	{
