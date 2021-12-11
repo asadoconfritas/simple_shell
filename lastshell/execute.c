@@ -7,7 +7,6 @@
 
 void execute(char **tokens)
 {
-	int i;
 	pid_t pid = fork();
 
 	if (pid == -1)
@@ -17,16 +16,13 @@ void execute(char **tokens)
 	}
 	else if (pid == 0)
 	{
-		i = execvp(tokens[0], tokens);
-		if (i < 0)
-		{
+		if (execve(tokens[0], tokens, NULL) < 0)
 			printf("Could not execute command..\n");
-			exit(0);
-		}
-		else
-		{
-			wait(NULL);
-			return;
-		}
+		exit(0);
+	}
+	else
+	{
+		wait(NULL);
+		return;
 	}
 }

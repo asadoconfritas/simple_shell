@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * main - main program shell
@@ -14,11 +15,10 @@ int main(int argc, char **argv)
 
 	while (mode)
 	{
-		isa = isatty(STDIN_FILENO);
-		if (isa == 1)
-			write(1, "$ ", 2); /**display a prompt*/
-		else
-			mode = 0;
+		if (isatty(STDIN_FILENO))
+			isa = write(1, "$ ", 2); /**display a prompt*/
+		if (isa == -1)
+			exit(-1);
 		fSres = firststep(&mode, argv, &tokens);
 		if (fSres == -1)
 			exit(0);
@@ -61,6 +61,6 @@ int firststep(int *mode, char **inp, char ***tokens)
 		*mode = 0;
 		exit(0);
 	}
-	execute(tokens[0]);
+	execute(*tokens);
 	return (0);
 }
