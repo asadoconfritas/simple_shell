@@ -15,11 +15,10 @@ int main(int argc, char **argv)
 
 	while (mode)
 	{
-		isa = isatty(STDIN_FILENO);
-		if (isa == 1)
-			write(1, "$ ", 2); /**display a prompt*/
-		else
-			mode = 0;
+		if (isatty(STDIN_FILENO))
+			isa = write(1, "$ ", 2); /**display a prompt*/
+		if (isa == -1)
+			exit(-1);
 		fSres = firststep(&mode, argv, &tokens);
 		if (fSres == -1)
 			exit(0);

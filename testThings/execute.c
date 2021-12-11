@@ -1,14 +1,11 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * execute - receives command line arg list (first file name)
- * @alltok: input
- * @env: environment
  * @tokens: argument
  */
 
-void execute(char **tokens, char ***alltok, char **env)
+void execute(char **tokens)
 {
 	pid_t pid = fork();
 
@@ -19,7 +16,7 @@ void execute(char **tokens, char ***alltok, char **env)
 	}
 	else if (pid == 0)
 	{
-		if (execve(tokens[0], *alltok, env) < 0)
+		if (execve(tokens[0], tokens, NULL) < 0)
 			printf("Could not execute command..\n");
 		exit(0);
 	}
